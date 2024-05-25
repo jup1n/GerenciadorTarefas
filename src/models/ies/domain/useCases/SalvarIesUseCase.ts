@@ -10,6 +10,7 @@ export class SalvarIesUseCase {
             const IesCriada = await this.iesRepository.salvarIes(ies);
             return IesCriada;
         }catch (error){
+            console.log(error)
             throw new Error('Problema ao criar IES')
         }
     } 

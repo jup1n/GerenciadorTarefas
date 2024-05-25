@@ -63,4 +63,6 @@ export const iesControllers = (fastify: FastifyInstance,
                 reply.code(500).send({erro: 'Problema ao deletar'})
             }
         })
+
+        done()
 }

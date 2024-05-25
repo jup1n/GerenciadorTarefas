@@ -1,7 +1,6 @@
 import { Ies } from "@prisma/client";
 import prisma from "../../../../config/database";
 import {  IesCriacaoDto, IesUpdateDto } from "../entity/ies";
-import { UUID } from "crypto";
 
 export interface IesRepositoryInterface{
     //nome(parametro:tipo):retorno
@@ -21,7 +20,7 @@ export class IesRepository implements IesRepositoryInterface{
         }
     }
 
-    async buscarIesPorCodigo(codigo: UUID): Promise<Ies|null>{
+    async buscarIesPorCodigo(codigo: string): Promise<Ies|null>{
         try{
             return await prisma.ies.findUnique({
                 where: {codigo}
@@ -41,7 +40,7 @@ export class IesRepository implements IesRepositoryInterface{
         }
     }
 
-    async altererIes(codigo: UUID,ies: IesUpdateDto): Promise<Ies>{
+    async altererIes(codigo: string,ies: IesUpdateDto): Promise<Ies>{
         try{
             return await prisma.ies.update({
                 where: {codigo},
@@ -52,7 +51,7 @@ export class IesRepository implements IesRepositoryInterface{
         }
     }
 
-    async deletarIes(codigo: UUID): Promise<void>{
+    async deletarIes(codigo: string): Promise<void>{
         try{
             await prisma.ies.delete({
                 where: {codigo},

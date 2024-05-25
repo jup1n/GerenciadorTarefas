@@ -5,7 +5,7 @@ import { Ies } from "@prisma/client";
 
 export class AlterarIesUseCase{
     constructor(private iesRepository: IesRepository){}
-    async execute(codigo: UUID,iesUpdate: IesUpdateDto):Promise<Ies>{
+    async execute(codigo: string,iesUpdate: IesUpdateDto):Promise<Ies>{
         try{
             return await this.iesRepository.altererIes(codigo,iesUpdate)
         }catch(error){
